@@ -64,7 +64,7 @@ ADD oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm /tmp/
 
 # Setup locale, Oracle instant client and Python
 RUN apt-get update \
-    && apt-get -y install language-pack-en alien libaio1 \
+    && apt-get -y install alien libaio1 \
     && alien -i /tmp/oracle-instantclient19.3-basic-19.3.0.0.0-1.x86_64.rpm \
     && alien -i /tmp/oracle-instantclient19.3-sqlplus-19.3.0.0.0-1.x86_64.rpm \
     && alien -i /tmp/oracle-instantclient19.3-devel-19.3.0.0.0-1.x86_64.rpm \
@@ -82,11 +82,11 @@ RUN apt-get update && apt-get install -y \
     curl apt-transport-https debconf-utils && \
     echo "deb http://deb.debian.org/debian jessie main" >> /etc/apt/sources.list && \
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
-    curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
     apt-get update && \
     apt-get upgrade -y libc6 && \
     apt-get install -y \
-        msodbcsql \
+        msodbcsql17 \
         mssql-tools \
         unixodbc-dev \
         libssl1.0.0  && \
